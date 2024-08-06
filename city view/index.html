@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TOURISM</title>
+
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+        }
+
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        h1, h2, h4 {
+            margin: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 0 20px;
+            height: 70px;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #333;
+            padding: 10px 15px;
+            border-radius: 20px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .nav-links a.active,
+        .nav-links a:hover {
+            background: #333;
+            color: #fff;
+        }
+
+        .menu-btn {
+            display: none;
+        }
+
+        /* Header styles */
+        header {
+            text-align: center;
+            padding: 100px 20px;
+            background: url('bg1.jpeg') no-repeat center center/cover;
+            color: #fff;
+        }
+
+        header h1 {
+            font-size: 48px;
+            margin: 0;
+        }
+
+        header #quote {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .ctn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #333;
+            color: #fff;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .ctn:hover {
+            background: #555;
+        }
+
+        /* Events section */
+        .events {
+            padding: 50px 20px;
+        }
+
+        .events .title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .events .title h1 {
+            font-size: 36px;
+            color: #333;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 15px;
+            margin: 15px;
+        }
+
+        .card-img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card h4 {
+            margin: 15px 0;
+        }
+
+        .font-color {
+            color: #666;
+        }
+
+        /* Explore section */
+        .explore {
+            background: #e0f7fa;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .explore-content h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .explore-content p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .explore-content .ctn {
+            background: #00796b;
+        }
+
+        /* Tours section */
+        .tours {
+            padding: 50px 20px;
+        }
+
+        .tours .container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .content-col {
+            flex: 1;
+            max-width: 45%;
+        }
+
+        .image-col {
+            flex: 1;
+            max-width: 45%;
+        }
+
+        .image-gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 5px 0;
+        }
+
+        /* About section */
+        #about {
+            padding: 50px 20px;
+        }
+
+        #about_us {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .boxx {
+            position: relative;
+        }
+
+        .cards {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .cardt {
+            cursor: pointer;
+        }
+
+        .cardt img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .cardt:hover img {
+            transform: scale(1.1);
+        }
+
+        #about-quad {
+            text-align: center;
+        }
+
+        #about-quad img {
+            border-radius: 12%;
+        }
+
+        /* Contact section */
+        #contact {
+            background: #cfd8dc;
+            padding: 50px 20px;
+        }
+
+        .contact-row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            flex: 1;
+            max-width: 30%;
+            padding: 10px;
+        }
+
+        .contact-item h4 {
+            margin-bottom: 10px;
+        }
+
+        .contact-item p {
+            color: #555;
+        }
+
+        /* Footer styles */
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .navbar .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .navbar .menu-btn {
+                cursor: pointer;
+            }
+
+            .container {
+                width: 90%;
+            }
+
+            .tours .container {
+                flex-direction: column;
+            }
+
+            .content-col, .image-col {
+                max-width: 100%;
+            }
+
+            .contact-item {
+                max-width: 100%;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+        </style>
+
+        <script>
+            // Function to remove borders from all nav links
+            function removeall() {
+                $(".cir_border").css("border", "none");
+            }
+        
+            // Add click event handlers for nav links
+            $(".nav-links a").on("click", function(e) {
+                e.preventDefault(); // Prevent default anchor behavior
+        
+                // Remove border from all links
+                removeall();
+        
+                // Add border to the clicked link
+                $(this).css("border", "2px solid whitesmoke");
+                $(this).css("border-radius", "20px");
+        
+                // Smooth scroll to the target section
+                const targetId = $(this).attr("href").substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        
+            // Add mouseover event for the About section
+            $("#about").on("mouseover", function () {
+                introAboutLogoTransition();
+            });
+        
+            // Function to animate About section logo
+            function introAboutLogoTransition() {
+                $("#about-quad").css("top", "70%");
+                $("#about-quad").css("opacity", "1");
+            }
+        
+            // Scroll button functionality
+            let mybutton = document.getElementById("upbtn");
+        
+            window.onscroll = function () {
+                scrollFunction();
+            };
+        
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    mybutton.style.display = "block";
+                } else {
+                    mybutton.style.display = "none";
+                }
+            }
+        
+            function topFunction() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        
+            // Update Navbar While Scrolling
+            function updateNav() {
+                const sections = document.querySelectorAll("section");
+                const navLinks = document.querySelectorAll(".nav-links li a");
+        
+                sections.forEach((section, index) => {
+                    const rect = section.getBoundingClientRect();
+        
+                    if (window.screen.width <= 425) {
+                        if (rect.top <= 1300) {
+                            navLinks.forEach((navLink) => {
+                                navLink.classList.remove("active");
+                            });
+                            navLinks[index].classList.add("active");
+                        }
+                    } else if (window.screen.width <= 768) {
+                        if (rect.top <= 1250) {
+                            navLinks.forEach((navLink) => {
+                                navLink.classList.remove("active");
+                            });
+                            navLinks[index].classList.add("active");
+                        }
+                    } else {
+                        if (rect.top <= 1000) {
+                            navLinks.forEach((navLink) => {
+                                navLink.classList.remove("active");
+                            });
+                            navLinks[index].classList.add("active");
+                        }
+                    }
+                });
+            }
+        
+            window.addEventListener("scroll", updateNav);
+        </script>
+        
+        
+</head>
+<body onload="initPage()">
+    <!-- Navbar -->
+    <nav class="navbar glass">
+        <a href="#home" class="logo">
+            <img class="img2" src="logo.jpeg" alt="Tourist Logo" width="40" />
+            <h1>TOURIST</h1>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home" class="active cir_border">Home</a></li>
+            <li><a href="#events" class="cir_border">Events</a></li>
+            <li><a href="#explore" class="cir_border">Explore</a></li>
+            <li><a href="#tours" class="cir_border">Tours</a></li>
+            <li><a href="#about" class="cir_border">About</a></li>
+            <li><a href="#contact" class="cir_border">Contact</a></li>
+            
+        </ul>
+        <img src="city1.jpeg" alt="Menu Button" class="menu-btn" />
+    </nav>
+
+    <header id="home">
+        <div class="header-content">
+            <h2 id="quote">Explore the Colourful World</h2>
+            <div class="ctn">Discover More</div>
+        </div>
+    </header>
+
+    <section class="events" id="events">
+        <div class="container">
+            <div class="title">
+                <h1>Upcoming Events</h1>
+            </div>
+            <div class="card">
+                <img src="city1.jpeg" alt="Event 1" class="card-img" />
+                <h4>CITY VIEWING</h4>
+                <p class="font-color">Join us for an exciting and exploring city view.</p>
+            </div>
+            <div class="card">
+                <img src="city2.jpeg" alt="Event 2" class="card-img" />
+                <h4>china city</h4>
+                <p class="font-color">Experience the culture of China.</p>
+            </div>
+            <div class="card">
+                <img src="city3.jpeg" alt="Event 3" class="card-img" />
+                <h4>Japan</h4>
+                <p class="font-color">Enjoy a night experience in Japan.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="tours" id="tours">
+        <div class="container">
+            <div class="content-col">
+                <h1>Tourist</h1>
+                <p>Our recent visitors were captivated by the city’s unparalleled charm and diversity. The city's iconic landmarks, each with its own rich history, left a lasting impression on travelers. From the architectural marvels that tell tales of bygone eras to the bustling streets filled with vibrant energy, every corner of the city offers something unique. Visitors relished the chance to stroll through picturesque neighborhoods, indulge in world-renowned cuisine, and immerse themselves in the lively arts and culture scene. Whether it was exploring hidden gems or enjoying well-known attractions, the city's blend of tradition and modernity made for an unforgettable experience. The feedback from our guests has been overwhelmingly positive, highlighting the city's ability to enchant and inspire all who come to explore..</p>
+            </div>
+            <div class="image-col">
+                <div class="image-gallery">
+                    <img src="tour1.jpeg" alt="Tour 1" />
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div id="about_us">
+                <div class="boxx">
+                    <div class="cards">
+                        <div class="cardt">
+                            <img src="about1.jpeg" alt="About 1" />
+                        </div>
+                        <div class="cardt">
+                            <img src="about2.jpeg" alt="About 2" />
+                        </div>
+                    </div>
+                
+            </div>
+        </div>
+    </section>
+    <!-- About Section -->
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="contact-row">
+                <div class="contact-item">
+                    <h4 class="dark">Phone</h4>
+                    <p class="font-color">+1 234 567 8901</p>
+                </div>
+                <div class="contact-item">
+                    <h4 class="dark">Email</h4>
+                    <p class="font-color">info@adventure.com</p>
+                </div>
+                <div class="contact-item">
+                    <h4 class="dark">Address</h4>
+                    <p class="font-color">123 Adventure Lane</p>
+                    <p class="font-color">Wanderlust City</p>
+                    <p class="font-color">Adventureland</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+   
+    <footer>
+        <p>&copy; 2024 Tourist. All Rights Reserved.</p>
+    </footer>
+    
+</body>
+</html>
